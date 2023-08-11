@@ -1,0 +1,20 @@
+.card-header {
+  color: #0d0057;
+  background-color: rgba(245, 253, 221, 0.795);
+  /* background-color: rgba(236, 183, 56, 0.36); */
+  font-family: Calibri;
+}
+
+.card-header-master {
+  color: rgb(255, 247, 227);
+  background-color: #2496aa;
+  font-family: Avenir, Helvetica, sans-serif;
+  text-align: center;
+}
+
+/* @media (min-width: 576px) { */
+  .card-deck .card {
+    display: flex;
+    flex: initial;
+  }
+/* } */

@@ -1,0 +1,89 @@
+body {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.95) 100%);
+  background-color: #151515;
+  /* background-position: 0 70px; */
+  background-attachment: fixed;
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.25) 100%), url('../img/bg-template-2.jpg');
+}
+
+nav.navbar {
+  background-color: #082d46;
+}
+
+.navbar-brand, .navbar-dark .navbar-brand {
+  font-family: Avenir, Helvetica, sans-serif; /* Lobster, 'Carter One', Georgia, */
+  color: #fffcec;
+  font-size: 28px;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #f8f9fa;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #fafa99;
+}
+
+footer.footer {
+  background-color: #0f0f0f !important
+}
+
+.fa-spin-reverse {
+  -webkit-animation: fa-spin-reverse 2s infinite linear;
+  animation: fa-spin-reverse 2s infinite linear;
+}
+
+@-webkit-keyframes fa-spin-reverse {
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  0% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes fa-spin-reverse {
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  0% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+/* Custom styles for this template */
+html {
+    font-size: 14px;
+  }
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.container {
+    max-width: 1280px;
+}
+
+.pricing-header {
+    max-width: 700px;
+}
+
+.card-deck .card {
+    min-width: 220px;
+}

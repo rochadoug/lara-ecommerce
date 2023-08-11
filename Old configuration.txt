@@ -1,0 +1,104 @@
+##################################################
+###           PASSOS DE CONFIGURAÇÃO           ###
+##################################################
+
+==================================================
+= INSTALANDO E CONFIGURANDO O APACHE 2.4.38
+==================================================
+
+-Baixar Apache 2.4.38 VC15 x64 no link: https://home.apache.org/~steffenal/VC15/binaries/httpd-2.4.38-win64-VC15.zip
+
+-Extrair pasta no diretório desejado (Ex: C:\WebServer\Apache24)
+
+-Abrir o Prompt de Comandos (Como Administrador) mover para pasta destino (Ex: "C:\WebServer\Apache24\bin") e executar a instalação:
+    cd C:\WebServer\Apache24\Bin
+    httpd.exe -k install
+
+-Abrir o arquivo httpd.conf na pasta do Apache (Ex: "C:\WebServer\Apache24\conf")
+    Na Linha 37 ``Define SRVROOT ""´´ definir corretamente o caminho de instalação do Apache (Ex: Define SRVROOT "C:/WebServer/Apache24")
+    Aproximadamente na linha 185, após linhas de "#LoadModule" inserir comandos de integração com o PHP, como no exemplo abaixo:
+        LoadModule php7_module "C:/WebServer/php/php7apache2_4.dll"
+        AddType application/x-httpd-php .php
+        PHPIniDir "C:/WebServer/php"
+    Na linha que contém "DirectoryIndex index.html" deixar assim: "DirectoryIndex index.php index.html"
+    Procurar pela Linha que contém "#LoadModule rewrite_module modules/mod_rewrite.so" e descomentar removendo o caracter "#"
+    Procurar pela Linha que contém "Include conf/extra/httpd-vhosts.conf" e descomentar removendo o caracter "#"
+
+-Abrir o arquivo httpd-vhosts.conf na pasta do Apache (Ex: "C:\WebServer\Apache24\conf\extra") e adicionar ao final do arquivo (Verificar caminho do diretório do projeto, abaixo está em C:\WebServer\htdcos\<project>):
+    <VirtualHost testedevweb.prj:80>
+      DocumentRoot "C:\WebServer\htdocs\teste_dev_web_uniasselvi\public"
+      ServerAdmin testedevweb.prj
+      <Directory "C:\WebServer\htdocs\teste_dev_web_uniasselvi">
+            Options Indexes FollowSymLinks
+            AllowOverride All
+            Require all granted
+      </Directory>
+    </VirtualHost>
+
+-Abrir o arquivo hosts do windows em "C:\Windows\System32\drivers\etc" e adicionar no final do arquivo:
+    127.0.0.1	testedevweb.prj
+
+==================================================
+= INSTALANDO E CONFIGURANDO O PHP 7.3.1
+==================================================
+
+-Baixar o PHP 7.3.1 TS x64 VC15 no link: https://windows.php.net/downloads/releases/php-7.3.1-Win32-VC15-x64.zip
+-Extrair pasta no diretório desejado (Ex: C:\WebServer\php7)
+-Copiar o arquivo "php.ini-development" com o nome "php.ini"
+-Descomentar na linha 750 o comando ``extension_dir = "ext"´´ removendo o caracter ";"
+-Descomentar as linhas (aproximadamente na linha 910 e adiante) com os comandos "extension=openssl", "extension=mbstring", "extension=pdo_odbc", "extension=pdo_pgsql", "extension=pgsql", removendo o caracter ";"
+-Em caso de erro ao iniciar o Apache, alterar os comandos adicionando o prefixo "php_" e sufixo ".dll" (Ex: "extension=php_openssl.dll")
+-Alterar a linha que contém ";date.timezone =" para "date.timezone = UTC", aproximadamente na linha 950
+
+==================================================
+= INSTALANDO E CONFIGURANDO O COMPOSER
+==================================================
+
+-Baixar o instalador do Composer no link: https://getcomposer.org/Composer-Setup.exe
+-Para instalar, dê Next na primeira tela, na segunda tela clique em "Browse", mova até a pasta onde está o "php.exe" (Ex: C:\WebServer\php7) e selecione o executável
+-Continue com next nas próximas telas até aparecer o botão "Install"
+-Permita integrar o caminho do PHP.exe no PATH do windows
+
+==================================================
+= Instalando o Banco de Dados PostgreSQL
+==================================================
+
+-Baixar o instalador versão 11.1 x64 no link: https://www.enterprisedb.com/thank-you-downloading-postgresql?anid=1256152
+-Durante a instalação, definir a senha como: postgresqlpass
+-Baixar SQL Manager Lite for PostgreSQL através da página no link: https://www.sqlmanager.net/en/tools/free
+-Certifique-se de deixar correta a configuração "timezone" para 'America/Sao_Paulo' no arquivo "postgresql.conf" dentro da pasta de instalação (Ex: C:\Program Files\PostgreSQL\11\data ) pois é a mesma configuração do projeto no Laravel. Caso necessário reinicie o serviço do Servidor do BD
+-Após instalação de ambos os proogramas acima, acessar o SQL Manager e criar a database do sistema com o comando a seguir:
+    CREATE DATABASE testedevweb
+      WITH OWNER = postgres
+        ENCODING = 'UTF8';
+
+==================================================
+= INICIANDO O APACHE
+==================================================
+
+-Abra o aplicativo "ApacheMonitor.exe" na pasta do Apache (Ex: C:\WebServer\Apache24)
+-Nos icones da bandeija do sistema, clique no ApacheMonitor e vá em "Start"
+-Abra o navegador e acesse "localhost", se aparecer "Its Works!" deu tudo certo!
+
+==================================================
+= Baixando e Movendo e configurando o Projeto
+==================================================
+
+-Com o download da Aplicação (enviado por email), extraia os arquivos no diretório desejado, lembre-se que o caminho do projeto, interfere nas configurações anteriores do Apache, então verifique se está tudo igual. Pode escolher qualquer caminho, só configure os arquivos do apache nos passos anteiores com o mesmo caminho
+
+==================================================
+= Rodando a Aplicação
+==================================================
+
+-Abra o Prompt de Comandos do Windows, navegue até a pasta do Projeto (Ex: cd C:\WebServer\htdocs\teste_dev_web_uniasselvi), rode o comando: "php artisan migrate:fresh --seed" para criar as tabelas e inserir dados iniciais para teste
+-Com todas as etapas seguidas, acesse o navegador pelo link "testedevweb.prj"
+
+==================================================
+= Informações Extras
+==================================================
+
+-Usuários criados:
+    Admin (email => admin@ecommerce_project.com, senha => 123456)
+    Primeiro Cliente (email => pclecomm@ecommerce_project.com, senha => 123456)
+    Segundo Cliente (email => sclecomm@ecommerce_project.com, senha => 123456)
+-Tabela Produtos e PedidoStatus, também já contém registros iniciais

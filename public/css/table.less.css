@@ -1,0 +1,61 @@
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: initial;
+}
+
+.table-hover tbody tr:hover {
+  background-color: initial;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.table .table-dark,
+.table .table-dark > th,
+.table .table-dark > td {
+  background-color: #a6a8aa;
+}
+
+.table-hover .table-dark:hover {
+    background-color: #aaacae;
+}
+
+.table-dark.table-striped tbody tr:nth-of-type(odd) {
+  background-color: initial;
+}
+
+.table-dark.table-hover tbody tr:hover {
+  background-color: initial;
+}
+
+.table .table-dark.table-striped tbody tr:nth-of-type(odd) {
+  background-color: initial;
+}
+
+.table .table-dark.table-hover tbody tr:hover {
+  background-color: initial;
+}
+
+.table-dark.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.table-dark.table-hover > tbody > tr:hover {
+  background-color: rgba(255, 255, 255, 0.075);
+}
+
+.table .table-dark.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.table.table-hover .table-dark.table-hover > tbody > tr:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.table-responsive .table td.text-truncate {
+  max-width: 10px;
+}
