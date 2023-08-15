@@ -14,14 +14,14 @@ class ClienteTableSeeder extends Seeder
         //
         DB::table('tbl_cliente')->insert([
             'id_usuario' => 3,
-            'nome' => 'Pyetro Costa',
-            'cpf' => '36288099830',
-            'telefone' => '14997980535',
-            'cep' => '17522400',
-            'endereco' => 'Rua Virgílio Carvalho Oliveira',
-            'numero' => '29',
-            'complemento' => null,
-            'cidade' => 'Marília',
+            'nome' => 'Primeiro Cliente',
+            'cpf' => '12345678901',
+            'telefone' => '11987654321',
+            'cep' => '01002900',
+            'endereco' => 'Viaduto do Chá',
+            'numero' => '15',
+            'complemento' => '8 andar',
+            'cidade' => 'São Paulo',
             'created_at' => 'now()',
         ]);
     }

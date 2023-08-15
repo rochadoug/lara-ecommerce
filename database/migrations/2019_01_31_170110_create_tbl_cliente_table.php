@@ -21,7 +21,6 @@ class CreateTblClienteTable extends Migration
             $table->unsignedInteger('id_usuario');
             $table->string('nome', 100);
             $table->string('cpf', 11)->unique();
-            // $table->string('email', 100)->unique();
             $table->string('telefone', 11);
             $table->string('cep', 8);
             $table->string('endereco', 100);

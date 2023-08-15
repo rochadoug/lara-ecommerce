@@ -6,6 +6,8 @@ services:
     build:
       context: .
       dockerfile: docker/Dockerfile
+      args:
+          WWWGUID: '${WWWGUID:-1000}'
     image: laravel-5.7/php-7.4
     container_name: app
     restart: unless-stopped
@@ -14,12 +16,25 @@ services:
     environment:
       SERVICE_NAME: app
       SERVICE_TAGS: dev
+      WWWUSER: '${WWWUSER:-1000}'
     working_dir: /var/www/html/
     volumes:
       - ./:/var/www/html/
       - ./docker/php.ini:/usr/local/etc/php/conf.d/laravel.ini
     networks:
       - app-network
+    depends_on:
+      - db
+
+  # Composer files after app creation
+  # composer:
+  #   container_name: composer_installation
+  #   image: composer
+  #   volumes:
+  #     - ./:/var/www/html/
+  #   command: composer install --ignore-platform-reqs
+  #   depends_on:
+  #     - app
 
   # Nginx Service
   webserver:
@@ -35,6 +50,8 @@ services:
       - ./docker/nginx.conf:/etc/nginx/conf.d/app.conf
     networks:
       - app-network
+    depends_on:
+      - app
 
   # Postgres
   db:

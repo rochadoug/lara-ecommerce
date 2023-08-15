@@ -1,7 +1,5 @@
-FROM php:7.4-fpm
-
-# Copy composer.lock and composer.json into the working directory
-# COPY ../composer.lock ../composer.json /var/www/html/
+# FROM php:7.4-fpm AS php-build
+FROM php:7.4-fpm AS php-fpm
 
 # Set working directory
 WORKDIR /var/www/html/
@@ -26,6 +24,11 @@ RUN apt-get update && apt-get install -y \
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
+# Install composer (php package manager)
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+FROM php-fpm AS php-dockerize
+
 # Install extensions for php
 RUN docker-php-ext-install mbstring zip exif pcntl
 RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
@@ -33,28 +36,27 @@ RUN docker-php-ext-install pdo pdo_pgsql
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install gd
 
-# Install composer (php package manager)
-# RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Set permissions for common user
+FROM php-dockerize AS php-copy-project
 
 # Copy existing application directory contents to the working directory
 COPY . /var/www/html
 
-RUN cp .env.docker .env
+# Create system user to run Composer and Artisan Commands
+ARG WWWGUID
+RUN useradd -ms /bin/bash -u $WWWGUID -G www-data,root laravel
 
 # Assign permissions of the working directory to the 1000 user
-RUN chown -R 1000:1000 \
+RUN chown -R laravel:laravel \
         /var/www/html/storage \
         /var/www/html/bootstrap/cache \
         /var/www/html/storage/logs
 RUN chmod o+w /var/www/html/storage -R
+RUN rm -rf public/storage
 
-RUN cd /var/www/html && composer install
-RUN php artisan key:generate
-RUN php artisan storage:link
-RUN php artisan migrate
-RUN php artisan db:seed
+USER $WWWGUID:$WWWGUID
 
 # Expose port 9000 and start php-fpm server (for FastCGI Process Manager)
 EXPOSE 9000
-CMD ["php-fpm"]
+
+CMD ["bash", "-c" , "cp /var/www/html/.env.docker /var/www/html/.env && composer install --no-plugins && php artisan key:generate && rm -rf public/storage && php artisan storage:link && php-fpm"]

@@ -29,7 +29,7 @@ class ProdutoTableSeeder extends Seeder
             'cod_barras' => '7891234560021',
             'valor' => 969,
             'ativo' => true,
-            'imagem' => 'public/produtos/produto_image_000002.jpg',
+            'imagem' => 'public/produtos/produto_image_000002.png',
             'quantidade' => 10,
             'created_at' => 'now()',
         ]);
@@ -106,7 +106,7 @@ class ProdutoTableSeeder extends Seeder
             'cod_barras' => '7891234560095',
             'valor' => 999,
             'ativo' => true,
-            'imagem' => 'public/produtos/produto_image_000009.jpg',
+            'imagem' => 'public/produtos/produto_image_000009.png',
             'quantidade' => 10,
             'created_at' => 'now()',
         ]);
@@ -128,7 +128,7 @@ class ProdutoTableSeeder extends Seeder
             'cod_barras' => '7891234560111',
             'valor' => 195,
             'ativo' => true,
-            'imagem' => 'public/produtos/produto_image_000011.png',
+            'imagem' => 'public/produtos/produto_image_000011.jpg',
             'quantidade' => 10,
             'created_at' => 'now()',
         ]);
