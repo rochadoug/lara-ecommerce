@@ -26,9 +26,9 @@
 
 -Abrir o arquivo httpd-vhosts.conf na pasta do Apache (Ex: "C:\WebServer\Apache24\conf\extra") e adicionar ao final do arquivo (Verificar caminho do diretório do projeto, abaixo está em C:\WebServer\htdcos\<project>):
     <VirtualHost testedevweb.prj:80>
-      DocumentRoot "C:\WebServer\htdocs\teste_dev_web_uniasselvi\public"
+      DocumentRoot "C:\WebServer\htdocs\lara-ecommerce\public"
       ServerAdmin testedevweb.prj
-      <Directory "C:\WebServer\htdocs\teste_dev_web_uniasselvi">
+      <Directory "C:\WebServer\htdocs\lara-ecommerce">
             Options Indexes FollowSymLinks
             AllowOverride All
             Require all granted
@@ -90,7 +90,7 @@
 = Rodando a Aplicação
 ==================================================
 
--Abra o Prompt de Comandos do Windows, navegue até a pasta do Projeto (Ex: cd C:\WebServer\htdocs\teste_dev_web_uniasselvi), rode o comando: "php artisan migrate:fresh --seed" para criar as tabelas e inserir dados iniciais para teste
+-Abra o Prompt de Comandos do Windows, navegue até a pasta do Projeto (Ex: cd C:\WebServer\htdocs\lara-ecommerce), rode o comando: "php artisan migrate:fresh --seed" para criar as tabelas e inserir dados iniciais para teste
 -Com todas as etapas seguidas, acesse o navegador pelo link "testedevweb.prj"
 
 ==================================================
@@ -98,7 +98,7 @@
 ==================================================
 
 -Usuários criados:
-    Admin (email => admin@ecommerce_project.com, senha => 123456)
-    Primeiro Cliente (email => pclecomm@ecommerce_project.com, senha => 123456)
-    Segundo Cliente (email => sclecomm@ecommerce_project.com, senha => 123456)
+    Admin (email => admin@ecommerceproject.com, senha => 123456)
+    Primeiro Cliente (email => pclecomm@ecommerceproject.com, senha => 123456)
+    Segundo Cliente (email => sclecomm@ecommerceproject.com, senha => 123456)
 -Tabela Produtos e PedidoStatus, também já contém registros iniciais

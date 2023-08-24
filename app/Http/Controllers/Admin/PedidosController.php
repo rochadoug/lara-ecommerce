@@ -98,11 +98,12 @@ class PedidosController extends Controller
     {
         //
         $record = Pedido::with('Produtos', 'PedidoStatus', 'Cliente')->find($id);
-        //d( $record );
+        // dd( $record );
 
-        $record->id_pedido_status = 7;
-        $record->save();
-        $record->refresh();
+        // Esse trecho abaixo era pra ser usado quando o projeto era para ser uma hamburgueria
+        // $record->id_pedido_status = 7;
+        // $record->save();
+        // $record->refresh();
 
         $params = array(
             //'action'        => 'show',

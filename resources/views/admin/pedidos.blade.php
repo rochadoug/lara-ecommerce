@@ -35,7 +35,7 @@
 
     @include('includes.alerts')
 
-    {{-- @if (getRequestAction() == 'index') --}}
+    @if (getRequestAction() == 'index')
 
 
         <div class="card" {!! (getRequestAction()!='index' ? 'style="display: none"': '') !!} id="card-listagem">
@@ -108,7 +108,7 @@
         </div>
 
 
-    {{-- @elseif (getRequestAction() == 'show') --}}
+    @elseif (getRequestAction() == 'show')
 
 
         <div class="card" {!! (getRequestAction()!='show' ? 'style="display: none"': '') !!} id="card-cadastro">
@@ -189,7 +189,7 @@
         </div>
 
 
-    {{-- @endif --}}
+    @endif
 
 
 @endsection

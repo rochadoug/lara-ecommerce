@@ -100,6 +100,12 @@ class CarrinhoCompraController extends Controller
                 $total += $item['quantidade']*$item['valor'];
             }
 
+            // Gera variavel para atualizar o estoque
+            $upd_prod_stock = [];
+            array_map( function($a) use (&$upd_prod_stock) {
+              $upd_prod_stock[$a['id']] = $a['quantidade'];
+            }, $cart);
+
             // Test for array 1 dimension
             //$cart = ['id'=>12390, 'teste' => 'alalal', 'nome' => 'oi', 'valor' => 956.45 ];
             //array_unset_recursive_key($cart, ['id', 'nome', 'imagem']);
@@ -113,6 +119,7 @@ class CarrinhoCompraController extends Controller
                 $cart[$k]['updated_at'] = 'now()';
             }
 
+            // Salva o pedido
             $pedido = new Pedido();
             $pedido->id_cliente = auth()->user()->Cliente->id;
             $pedido->valor = $total;
@@ -120,8 +127,17 @@ class CarrinhoCompraController extends Controller
             $pedido->numero = ($numero ? $numero->numero : 0)+1;
             $pedido->save();
 
+            // Salva os itens do pedido
             $pedido->Produtos()->attach($cart);
 
+            // Atualiza o estoque
+            foreach($upd_prod_stock as $k => $v ) {
+              $prod = Produto::find($k);
+              $prod->quantidade -= $v;
+              $prod->save();
+            }
+
+            // Limpa o carrinho
             Session::forget('cart');
 
             return redirect('/historico');

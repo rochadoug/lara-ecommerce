@@ -11,7 +11,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Teste Desenvolvedor Web - UNIASSELVI') }} - Admin</title>
+    <title>{{ config('app.name', 'Lara Ecommerce Project') }} - Admin</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -55,7 +55,7 @@
   </head>
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-sm-3 col-md-3 col-lg-2 mr-0 d-block" href="{{ url('/') }}/admin">{{ config('app.name', 'Teste Desenvolvedor Web - UNIASSELVI') }}</a>
+        <a class="navbar-brand col-sm-3 col-md-3 col-lg-2 mr-0 d-block" href="{{ url('/') }}/admin">{{ config('app.name', 'Lara Ecommerce Project') }}</a>
         <!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search"> -->
         <ul class="navbar-nav px-3 mx-1 bg-secondary">
             <li class="nav-item text-nowrap">

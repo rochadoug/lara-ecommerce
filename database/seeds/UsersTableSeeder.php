@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
         //
         DB::table('users')->insert([
             'name' => 'Administrador Senior',
-            'email' => 'admin@ecommerce_project.com',
+            'email' => 'admin@ecommerceproject.com',
             'password' => bcrypt('123456'),
             'admin' => true,
             'created_at' => 'now()',
@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'Primeiro Cliente Ecommerce',
-            'email' => 'pclecomm@ecommerce_project.com',
+            'email' => 'pclecomm@ecommerceproject.com',
             'password' => bcrypt('123456'),
             'admin' => false,
             'created_at' => 'now()',
@@ -32,7 +32,7 @@ class UsersTableSeeder extends Seeder
 
         DB::table('users')->insert([
             'name' => 'Segundo Cliente Ecommerce',
-            'email' => 'sclecomm@ecommerce_project.com',
+            'email' => 'sclecomm@ecommerceproject.com',
             'password' => bcrypt('123456'),
             'admin' => false,
             'created_at' => 'now()',

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Teste Desenvolvedor Web - UNIASSELVI') }}</title>
+    <title>{{ config('app.name', 'Lara Ecommerce Project') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -34,7 +34,7 @@
         <nav class="navbar navbar-expand-md mb-3 pb-3 navbar-dark navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Teste Desenvolvedor Web - UNIASSELVI') }}
+                    {{ config('app.name', 'Lara Ecommerce Project') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -122,7 +122,7 @@
                         <h5>Contato</h5>
                         <ul class="list-unstyled text-small">
                             <li><a class="text-light" href="#">(14) 3451-7070</a></li>
-                            <li><a class="text-light" href="#">contato@uniasselvi.com.br</a></li>
+                            <li><a class="text-light" href="#">contato@ecommerceproject.com</a></li>
                             <li><a class="text-light" href="#">Rua Eugênio Pessini, 63</a></li>
                             <li><a class="text-light" href="#">Marília-SP</a></li>
                         </ul>
@@ -131,7 +131,7 @@
                     <div class="col-auto">
                         <h5>Horário de Atendimento</h5>
                         <ul class="list-unstyled text-small">
-                            <li><a class="text-light" href="#">Aberto das 18h00 às 00h00</a></li>
+                            <li><a class="text-light" href="#">Aberto das 08:00 às 18:00</a></li>
                         </ul>
                     </div>
                 </div>
